@@ -1,0 +1,16 @@
+<h2>Cards:</h2>
+
+<div *ngFor="let card of cards">
+    <h3>
+        <a [title]="'go to ' + card.name + ' details'"
+        [routerLink]="['/cards', card.id]">
+            {{card.name}}
+        </a>
+    </h3>
+    <p>price: {{card.price}} zł</p>
+    <p>cardLength: {{card.cardLength}} mm</p>
+    <p>ram: {{card.ram}} GB</p>
+    <p> coreClock: {{card.coreClock}} MHz</p>
+
+
+</div>
