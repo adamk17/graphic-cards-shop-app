@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { cards } from '../cards';
+import { Cards, cards } from '../cards';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-cards-list',
@@ -9,4 +10,12 @@ import { cards } from '../cards';
 export class CardsListComponent {
   
   cards = [...cards];
+
+  constructor(
+    private cartService: CartService,
+  ) {}
+
+  addToCart(card: Cards) {
+    this.cartService.addToCart(card);
+  }
 }
