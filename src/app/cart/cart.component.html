@@ -1,9 +1,28 @@
-<h3>Cart</h3>
+<h1>Cart</h1>
 
+<h3>Products:</h3>
 <div class="cart-item" *ngFor="let item of items">
   <span>{{ item.name }}</span>
   <span>{{ item.price }} zł</span>
 </div>
+<h3>Shipping prices:</h3>
+
+<h3>On-line pay:</h3>
+<div class="shipping-item" *ngFor="let shipping of shippingCostsOnLine | async">
+  <span>{{ shipping.type }}</span>
+  <span>{{ shipping.from }}</span>
+  <span>{{ shipping.to }}</span>
+  <span>{{ shipping.price }}</span>
+</div>
+
+<h3>On-Delivery pay:</h3>
+<div class="shipping-item" *ngFor="let shipping of shippingCostsOnDelivery | async">
+  <span>{{ shipping.type }}</span>
+  <span>{{ shipping.from }}</span>
+  <span>{{ shipping.to }}</span>
+  <span>{{ shipping.price }}</span>
+</div>
+
 <div>
-  <span>Total Price: {{totalPrice}}</span>
+  <span>Total Prices: {{totalPrice}}</span>
 </div>
