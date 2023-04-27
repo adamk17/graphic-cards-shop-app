@@ -7,10 +7,11 @@
             {{card.name}}
         </a>
     </h3>
-    <p>price: {{card.price}} zł</p>
+    <p>price: {{card.price | currency:'PL'}} </p>
     <p>cardLength: {{card.cardLength}} mm</p>
     <p>ram: {{card.ram}} GB</p>
     <p> coreClock: {{card.coreClock}} MHz</p>
+    <button type="button" (click)="addToCart(card)">Add to cart</button>
 
 
 </div>
