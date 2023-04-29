@@ -8,7 +8,7 @@
 <h3>Shipping prices:</h3>
 
 <h3>On-line pay:</h3>
-<div class="shipping-item" *ngFor="let shipping of shippingCostsOnLine | async">
+<div class="shipping-item" *ngFor="let shipping of shippingCostsOnLine | async " (click)="choseShipping(shipping)">
   <span>{{ shipping.type }}</span>
   <span>{{ shipping.from }}</span>
   <span>{{ shipping.to }}</span>
@@ -16,13 +16,21 @@
 </div>
 
 <h3>On-Delivery pay:</h3>
-<div class="shipping-item" *ngFor="let shipping of shippingCostsOnDelivery | async">
+<div class="shipping-item" *ngFor="let shipping of shippingCostsOnDelivery | async" (click)="choseShipping(shipping)">
   <span>{{ shipping.type }}</span>
   <span>{{ shipping.from }}</span>
   <span>{{ shipping.to }}</span>
   <span>{{ shipping.price }}</span>
 </div>
 
-<div>
-  <span>Total Prices: {{totalPrice}}</span>
+<div>Total Prices: {{totalPrice}}</div>
+<div> Delivery cost:
+  <span *ngIf="chosenShipping">{{ chosenShipping.price }}</span>
 </div>
+<div> Final cost:
+  <span> {{finalPrice}}</span>
+</div>
+
+
+
+

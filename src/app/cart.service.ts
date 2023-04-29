@@ -1,16 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Cards } from './cards';
+import { Shipping } from './shipping';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
   items: Cards[] = [];
+  chosenShipping!: Shipping;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    
   ) {}
+
+  
 
   addToCart(card: Cards) {
     this.items.push(card);
@@ -25,6 +30,15 @@ export class CartService {
     return this.items;
   }
 
+  choseShipping(shipping: Shipping) {
+    this.chosenShipping = shipping;
+  }
+
+  getChosenShipping() {
+    return this.chosenShipping;
+  }
+
+
   getTotalPrice() {
     let sum = 0;
    
@@ -34,13 +48,15 @@ export class CartService {
     return sum;
   }
 
-  getShippingOnDeliveryPrices() {
-    return this.http.get<{type: string, from: number, to: number, price: number}[]>('/assets/shippingOnDelivery.json');
+   getShippingOnDeliveryPrices() {
+     return this.http.get<Shipping[]>('/assets/shippingOnDelivery.json');
   }
 
-  getShippingOnLinePrices() {
-    return this.http.get<{type: string, from: number, to: number, price: number}[]>('/assets/shippingOnLine.json');
+   getShippingOnLinePrices() {
+    return this.http.get<Shipping[]>('/assets/shippingOnLine.json');
   }
+
+ 
 
 }
 
