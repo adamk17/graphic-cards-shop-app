@@ -31,4 +31,13 @@ export class CardsDetailsComponent implements OnInit {
     this.cartService.addToCart(card);
   }
 
+ 
+
 }
+
+//Nasze magiczne Encanto
+//merida waleczna
+//luka
+//megamocny
+//planeta skarbów
+//piotruś pan i wendy

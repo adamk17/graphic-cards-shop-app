@@ -1,0 +1,53 @@
+[
+    {
+        "id": 2,
+      "name": "PL84184",
+      "adress": "Rokicińska 192",
+      "code": "92-412",
+      "town": "Łódź",
+      "description": "Automat paczkowy",
+      "positionX": 51.754186, 
+      "positionY": 19.582923
+    },
+    {
+        "id": 2,
+      "name": "PL84315",
+        "adress": "Mickiewicza 15A",
+        "code": "90-431",
+        "town": "Łódź",
+        "description": "Automat paczkowy",
+        "positionX": 51.758885, 
+        "positionY": 19.456861
+    },
+    {
+        "id": 2,
+      "name": "PL84403",
+        "adress": "Rokicińska 386",
+        "code": "92-620",
+        "town": "Łódź",
+        "description": "Automat paczkowy",
+        "positionX": 51.740742, 
+        "positionY": 19.611653
+    },
+    {
+        "id": 2,
+      "name": "PL90011",
+        "adress": "Srebrna 4",
+        "code": "91-316",
+        "town": "Łódź",
+        "description": "Automat paczkowy w sklepie Biedronka",
+        "positionX": 51.792386, 
+        "positionY": 19.438920
+    },
+    {
+        "id": 2,
+      "name": "PL90132",
+        "adress": "Paradna 39",
+        "code": "93-345",
+        "town": "Łódź",
+        "description": "Automat paczkowy w sklepie Biedronka",
+        "positionX": 51.710117, 
+        "positionY": 19.479242
+    }
+    
+  ]

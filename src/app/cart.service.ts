@@ -8,7 +8,6 @@ import { Shipping } from './shipping';
 })
 export class CartService {
   items: Cards[] = [];
-  chosenShipping!: Shipping;
 
   constructor(
     private http: HttpClient,
@@ -30,15 +29,6 @@ export class CartService {
     return this.items;
   }
 
-  choseShipping(shipping: Shipping) {
-    this.chosenShipping = shipping;
-  }
-
-  getChosenShipping() {
-    return this.chosenShipping;
-  }
-
-
   getTotalPrice() {
     let sum = 0;
    
@@ -48,13 +38,7 @@ export class CartService {
     return sum;
   }
 
-   getShippingOnDeliveryPrices() {
-     return this.http.get<Shipping[]>('/assets/shippingOnDelivery.json');
-  }
-
-   getShippingOnLinePrices() {
-    return this.http.get<Shipping[]>('/assets/shippingOnLine.json');
-  }
+  
 
  
 
