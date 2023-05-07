@@ -1,0 +1,53 @@
+[
+    {
+        "id": 1,
+        "name": "LOD313M",
+      "adress": "Rokicińska 289",
+      "code": "92-412",
+      "town": "Łódź",
+      "description": "Market Dino",
+      "positionX": 51.745035, 
+      "positionY": 19.603109
+    },
+    {
+        "id": 1,
+        "name": "ANJ01A",
+        "adress": "Rokicińska 390",
+        "code": "92-412",
+        "town": "Łódź",
+        "description": "Przy sklepie Jamir",
+        "positionX": 51.740331, 
+        "positionY": 19.612875
+    },
+    {
+        "id": 1,
+        "name": "LOD43A",
+        "adress": "Jagienki 34",
+        "code": "92-439",
+        "town": "Łódź",
+        "description": "Przy centrum handlowym Jagienka",
+        "positionX": 51.752535, 
+        "positionY": 19.573941
+    },
+    {
+        "id": 1,
+        "name": "LOD127M",
+        "adress": "Biedronkowa 3",
+        "code": "91-358",
+        "town": "Łódź",
+        "description": "Na parkingu przy ul.Biedronkowej 3",
+        "positionX": 51.816451, 
+        "positionY": 19.431913
+    },
+    {
+        "id": 1,
+        "name": "LOD35A",
+        "adress": "Kongresowa 34",
+        "code": "93-376",
+        "town": "Łódź",
+        "description": "Na końcu parkingu",
+        "positionX": 51.721249, 
+        "positionY": 19.476550
+    }
+    
+  ]

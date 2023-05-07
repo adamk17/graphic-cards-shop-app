@@ -9,6 +9,8 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { CardsListComponent } from './cards-list/cards-list.component';
 import { CardsDetailsComponent } from './cards-details/cards-details.component';
 import { CartComponent } from './cart/cart.component';
+import { AdressFieldComponent } from './adress-field/adress-field.component';
+import { InPostEasyPackComponent } from './in-post-easy-pack/in-post-easy-pack.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { CartComponent } from './cart/cart.component';
     TopBarComponent,
     CardsListComponent,
     CardsDetailsComponent,
-    CartComponent
+    CartComponent,
+    AdressFieldComponent,
+    InPostEasyPackComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +30,7 @@ import { CartComponent } from './cart/cart.component';
       { path: '', component: CardsListComponent },
       { path: 'cards/:cardId', component: CardsDetailsComponent },
       { path: 'cart', component: CartComponent },
+      { path: 'adress', component: AdressFieldComponent,}
     ])
   ],
   providers: [],

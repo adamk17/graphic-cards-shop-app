@@ -8,7 +8,9 @@
 <h3>Shipping prices:</h3>
 
 <h3>On-line pay:</h3>
-<div class="shipping-item" *ngFor="let shipping of shippingCostsOnLine | async " (click)="choseShipping(shipping)">
+<div class="shipping-item" *ngFor="let shipping of shippingCostsOnLine | async " 
+[class.selected]="shipping === chosenShipping"
+(click)="choseShipping(shipping)">
   <span>{{ shipping.type }}</span>
   <span>{{ shipping.from }}</span>
   <span>{{ shipping.to }}</span>
@@ -16,20 +18,27 @@
 </div>
 
 <h3>On-Delivery pay:</h3>
-<div class="shipping-item" *ngFor="let shipping of shippingCostsOnDelivery | async" (click)="choseShipping(shipping)">
+<div class="shipping-item" *ngFor="let shipping of shippingCostsOnDelivery | async" 
+[class.selected]="shipping === chosenShipping"
+(click)="choseShipping(shipping)">
   <span>{{ shipping.type }}</span>
   <span>{{ shipping.from }}</span>
   <span>{{ shipping.to }}</span>
   <span>{{ shipping.price }}</span>
 </div>
 
-<div>Total Prices: {{totalPrice}}</div>
+<div>Total Prices: {{totalPrice}} zł</div>
 <div> Delivery cost:
-  <span *ngIf="chosenShipping">{{ chosenShipping.price }}</span>
+  <span *ngIf="chosenShipping">{{ chosenShipping.price }} zł</span>
 </div>
 <div> Final cost:
-  <span> {{finalPrice}}</span>
+  <span> {{finalPrice}} zł</span>
 </div>
+<a routerLink="/adress">
+  <button *ngIf="chosenShipping">next</button>
+</a>
+
+
 
 
 

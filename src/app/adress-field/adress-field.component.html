@@ -1,0 +1,67 @@
+<p id="main_text">adress-field works!</p>
+
+
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+
+    <div>
+      <label for="name">
+        Name
+      </label>
+      <input id="name" type="text" formControlName="name">
+    </div>
+
+    <div>
+      <label for="surname">
+          Surname
+      </label>
+      <input id="surname" type="text" formControlName="surname">
+    </div>
+  
+    <div>
+      <label for="country">
+        Country
+      </label>
+      <input id="country" type="text" formControlName="country">
+    </div>
+
+    <div>
+      <label for="city">
+        City
+      </label>
+      <input id="city" type="text" formControlName="city">
+    </div>
+
+    <div>
+      <label for="postcode">
+        Postcode
+      </label>
+      <input id="postcode" type="text" formControlName="postcode">
+    </div>
+    
+    <div>
+      <label for="streetName">
+        Street Name
+      </label>
+      <input id="streetName" type="text" formControlName="streetName">
+    </div>
+    
+    <div>
+      <label for="streetNumber">
+        Street Number
+      </label>
+      <input id="streetNumber" type="text" formControlName="streetNumber">
+    </div>
+    
+    
+  
+    <button class="button" type="submit">Purchase</button>
+    
+  
+  </form>
+  
+  <div *ngIf="canDisplayMap()">
+    <app-in-post-easy-pack (closeClicked)="onCloseClicked()"></app-in-post-easy-pack>
+  </div>
+  
+
+ 

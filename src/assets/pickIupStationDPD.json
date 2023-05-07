@@ -1,0 +1,53 @@
+[
+    {
+        "id": 3,
+        "name": "PL54094",
+      "adress": "Aleja Matek Polskich 49",
+      "code": "93-337",
+      "town": "Łódź",
+      "description": "DPD Pickup \"Czysta Chata\"",
+      "positionX": 51.704161, 
+      "positionY": 19.478237
+    },
+    {
+        "id": 3,
+        "name": "PL55762",
+        "adress": "Rokicińska 190A",
+        "code": "92-620",
+        "town": "Łódź",
+        "description": "DPD Pickup \"Shell\"",
+        "positionX": 51.753258, 
+        "positionY": 19.582065
+    },
+    {
+        "id": 3,
+        "name": "PL60568",
+        "adress": "Rokicińska 398",
+        "code": "92-620",
+        "town": "Łódź",
+        "description": "DPD Pickup \"Sklep Żabka\"",
+        "positionX": 51.739672, 
+        "positionY": 19.613605
+    },
+    {
+        "id": 3,
+        "name": "PL16249",
+        "adress": "MARATOŃSKA 111",
+        "code": "94-007",
+        "town": "Łódź",
+        "description": "Studio Dekoral Premium",
+        "positionX": 51.737267, 
+        "positionY": 19.383082
+    },
+    {
+        "id": 3,
+        "name": "PL65046",
+        "adress": "Ogrodowa 8",
+        "code": "91-062",
+        "town": "Łódź",
+        "description": "DPD Pickup  \"Sklep Żabka\"",
+        "positionX": 51.778524, 
+        "positionY": 19.452491
+    }
+    
+  ]
