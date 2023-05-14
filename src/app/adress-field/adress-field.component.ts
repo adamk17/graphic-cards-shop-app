@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Location } from '@angular/common';
+import { CartService } from '../cart.service'
 import { ShippingService } from '../shipping.service'
+import {PickupPointService} from '../pickup-point.service'
 import { Shipping } from '../shipping';
+import { InPostParcelLockers } from '../inPostParcelLockers';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-adress-field',
@@ -13,20 +17,44 @@ export class AdressFieldComponent implements OnInit {
   
   showB = true;
   chosenShipping!: Shipping;
+  id = this.shippingService.getChosenShippingId();
+  chosenParcel!: InPostParcelLockers;
+  totalPrice = this.getAllPrice();
+  chosenImage!: string;
 
-  onCloseClicked() {
-    this.showB = false;
-  }
-
-  ngOnInit(): void {
-    this.chosenShipping = this.shippingService.getChosenShipping()
-  }
+  images: string[] = [
+    'assets/blik.png',
+    'assets/paypal.png',
+    'assets/visa.png',
+    'assets/mastercard.png'
+  ];
+  
 
   constructor(
     private formBuilder: FormBuilder,
-    private location: Location,
-    private shippingService: ShippingService
+    private cartService: CartService,
+    private shippingService: ShippingService,
+    private pickupPointService: PickupPointService,
+    private sanitizer: DomSanitizer
     ) {}
+  
+
+  onCloseClicked() {
+    this.showB = false;
+    this.canDisplayDeliveryPoint();
+    this.chosenParcel = this.pickupPointService.getChosenParcelInPost();
+  }
+
+  onOpenClicked() {
+    this.showB = true;
+  }
+
+  ngOnInit(): void {
+    this.chosenShipping = this.shippingService.getChosenShipping();
+    
+  }
+
+  
 
     checkoutForm = this.formBuilder.group({
       name: '',
@@ -52,14 +80,41 @@ export class AdressFieldComponent implements OnInit {
     }
 
     canDisplayMap() {
-      let id = this.shippingService.getChosenShippingId();
-
-      if( (this.showB == true) && (id == 12 || id == 15 || id == 24))
-      return true;
-
-      else
-      return false;
+      return ( (this.showB == true) && (this.id == 12 || this.id == 15 || this.id == 24));
     }
+
+    canDisplayAdress() {
+      return (this.id == 11 || this.id == 13 || this.id == 14 || this.id == 21 || this.id == 22 || this.id == 23);
+    }
+
+    canDisplayDeliveryPoint() {
+      return ((this.id == 12 || this.id == 15 || this.id == 24) && this.chosenParcel);
+    }
+
+    getAllPrice() {
+      return this.cartService.getTotalPrice() + this.shippingService.getChosenShippingPrice();
+    }
+
+    
+  currentIndex = 0;
+
+  get currentImage(): string {
+    return 'assets/${this.images[this.currentIndex]}';
+  }
+
+  changeImage(): void {
+    this.currentIndex++;
+    if (this.currentIndex === this.images.length) {
+      this.currentIndex = 0;
+    }
+    this.images[this.currentIndex] = this.images[this.currentIndex].replace(/(\d)$/, '$11');
+  }
+
+  choseImage(image: string) {
+    this.chosenImage = image;
+  }
+
+
   
   //chuj ci w dupe pietek
 // id: any;

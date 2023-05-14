@@ -16,6 +16,6 @@ export class CardsListComponent {
   ) {}
 
   addToCart(card: Cards) {
-    this.cartService.addToCart(card);
+    this.cartService.increaseValue(card)
   }
 }

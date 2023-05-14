@@ -1,14 +1,24 @@
-<h2>Card Details</h2>
+<h1>Card Details</h1>
 
-<div *ngIf="card">
-    <h3>{{ card.name}}</h3>
-    <h4>Price: {{ card.price}} zl</h4>
-    <p>Length: {{card.cardLength}} mm</p>
-    <p>Ram size: {{card.ram}} GB</p>
-    <p>Core clock: {{card.coreClock}} MHz</p>
-    <p>Description: {{card.description}}</p>
-    <button type="button" (click)="addToCart(card)">Add to cart</button>
-    
-    
-    
+<div class="detail" *ngIf="card">
+    <div>
+        <img [src]="card.image" width="500" height="500" alt="Obrazek">
+    </div>
+    <div>
+        <h3>{{ card.name}}</h3>
+        <p>Length: {{card.cardLength}} mm</p>
+        <p>Ram size: {{card.ram}} GB</p>
+        <p>Core clock: {{card.coreClock}} MHz</p>
+        <p>Description: {{card.description}}</p>
+    </div>
+    <!--<button type="button" (click)="addToCart(card)">Add to cart</button>-->
+    <div class="qty mt-5">
+        <h4>Price: {{ card.price}} zl</h4>
+        <span class="minus bg-dark" (click)="decreaseValue(card)">-</span>
+        <input type="number" class="count" name="qty" value={{card.amount}}>
+        <span class="plus bg-dark" (click)="increaseValue(card)">+</span>
+    </div>
+
+
+
 </div>

@@ -6,6 +6,8 @@ export interface Cards {
     ram: number;
     coreClock: number;
     description: string;
+    amount: number;
+    image: string;
 
 }
 
@@ -17,7 +19,9 @@ export const cards = [
         cardLength: 230,
         ram: 16,
         coreClock: 1800,
-        description: 'this is good card'
+        description: 'this is good card',
+        amount: 0,
+        image: 'assets/card pictures/rtx 3070.jpg'
     },
     {
         id: 2,
@@ -26,7 +30,9 @@ export const cards = [
         cardLength: 250,
         ram: 24,
         coreClock: 2000,
-        description: 'this is realy good card'
+        description: 'this is realy good card',
+        amount: 0,
+        image: 'assets/card pictures/rtx 3080 ti.jpg'
     },
     {
         id: 3,
@@ -35,7 +41,9 @@ export const cards = [
         cardLength: 220,
         ram: 32,
         coreClock: 2100,
-        description: 'you can play almost everything'
+        description: 'you can play almost everything',
+        amount: 0,
+        image: 'assets/card pictures/rtx 4090.jpg'
     },
     {
         id: 4,
@@ -44,6 +52,8 @@ export const cards = [
         cardLength: 240,
         ram: 8,
         coreClock: 1500,
-        description: ''
+        description: '',
+        amount: 0,
+        image: 'assets/card pictures/rtx 3060.jpg'
     },
 ]

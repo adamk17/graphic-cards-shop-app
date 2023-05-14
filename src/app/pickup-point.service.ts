@@ -34,7 +34,7 @@ export class PickupPointService {
     
     if(id == 12)
     parcelLockers = JSON.parse(this.jsonInPost);
-    else if(id == 15)
+    else if(id == 24)
     parcelLockers = JSON.parse(this.jsonDPD);
     else {
       let parcelLockers1: InPostParcelLockers[];
@@ -50,7 +50,6 @@ export class PickupPointService {
 
  choseParcelInPost(parcel: InPostParcelLockers) {
   this.chosenInPostParcel = parcel;
-  window.alert(parcel.adress)
 }
 
 getChosenParcelInPost() {
