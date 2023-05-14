@@ -16,22 +16,32 @@ export class CardsDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private cartService: CartService
-    ) {}
+  ) { }
 
-  ngOnInit(){
+  ngOnInit() {
 
     const routeParams = this.route.snapshot.paramMap;
     const cardIdFromRoute = Number(routeParams.get('cardId'))
 
     this.card = cards.find(card => card.id === cardIdFromRoute);
-    
+
   }
 
-  addToCart(card: Cards) {
-    this.cartService.addToCart(card);
+  decreaseValue(card: Cards) {
+    this.cartService.decreaseValue(card);
   }
 
- 
+  increaseValue(card: Cards) {
+    this.cartService.increaseValue(card);
+  }
+
+  getCardAmount(card: Cards) {
+    this.cartService.getCardAmount(card);
+  }
+
+  
+
+
 
 }
 

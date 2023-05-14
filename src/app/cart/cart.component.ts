@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CartService } from '../cart.service';
 import { Shipping } from '../shipping';
 import { ShippingService } from '../shipping.service'
+import { Cards } from '../cards';
 
 @Component({
   selector: 'app-cart',
@@ -9,7 +10,7 @@ import { ShippingService } from '../shipping.service'
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent {
-
+  
   items = this.cartService.getItems();
 
   shippingCostsOnLine =  this.shippingService.getShippingOnLinePrices();
@@ -26,9 +27,24 @@ export class CartComponent {
     private shippingService: ShippingService
   ) {}
 
+  increaseValue(card: Cards) {
+    this.cartService.increaseValue(card)
+    this.updateCost();
+  }
+  decreaseValue(card: Cards) {
+    this.cartService.decreaseValue(card)
+    this.updateCost();
+  }
+
   choseShipping(shipping: Shipping) {
     this.shippingService.choseShipping(shipping);
+    this.updateCost();
+    
+  }
+
+  private updateCost() {
     this.chosenShipping = this.shippingService.getChosenShipping();
+    this.totalPrice = this.cartService.getTotalPrice();
     this.finalPrice = this.getAllCost();
   }
 

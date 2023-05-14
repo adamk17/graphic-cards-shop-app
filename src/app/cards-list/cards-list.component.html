@@ -1,17 +1,24 @@
-<h2>Cards:</h2>
+<div class="card-list" *ngFor="let card of cards">
+    <div class="image">
 
-<div *ngFor="let card of cards">
-    <h3>
-        <a [title]="'go to ' + card.name + ' details'"
-        [routerLink]="['/cards', card.id]">
-            {{card.name}}
-        </a>
-    </h3>
-    <p>price: {{card.price | currency:'PL'}} </p>
-    <p>cardLength: {{card.cardLength}} mm</p>
-    <p>ram: {{card.ram}} GB</p>
-    <p> coreClock: {{card.coreClock}} MHz</p>
-    <button type="button" (click)="addToCart(card)">Add to cart</button>
+        <img [src]="card.image" width="200" height="200" alt="Obrazek">
+    </div>
+    <div>
+        <h1>
+            <a [title]="'go to ' + card.name + ' details'" [routerLink]="['/cards', card.id]">
+                {{card.name}}
+            </a>
+        </h1>
+        <div>
+            <p>cardLength: {{card.cardLength}} mm</p>
+            <p>ram: {{card.ram}} GB</p>
+            <p> coreClock: {{card.coreClock}} MHz</p>
+        </div>
+        <div>
+            <p class="price">price: {{ card.price }} zł</p>
+            <button type="button" (click)="addToCart(card)">Add to cart</button>
+        </div>
+    </div>
 
 
 </div>

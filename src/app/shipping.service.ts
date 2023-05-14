@@ -10,8 +10,8 @@ export class ShippingService {
 
   constructor(
     private http: HttpClient,
-    
-  ) {}
+
+  ) { }
 
   choseShipping(shipping: Shipping) {
     this.chosenShipping = shipping;
@@ -25,12 +25,18 @@ export class ShippingService {
     return this.chosenShipping.id;
   }
 
-  
-  getShippingOnDeliveryPrices() {
-     return this.http.get<Shipping[]>('/assets/shippingOnDelivery.json');
+  getChosenShippingPrice() {
+    if (this.chosenShipping)
+      return this.chosenShipping.price
+    else
+      return 0;
   }
 
-   getShippingOnLinePrices() {
+  getShippingOnDeliveryPrices() {
+    return this.http.get<Shipping[]>('/assets/shippingOnDelivery.json');
+  }
+
+  getShippingOnLinePrices() {
     return this.http.get<Shipping[]>('/assets/shippingOnLine.json');
   }
 }

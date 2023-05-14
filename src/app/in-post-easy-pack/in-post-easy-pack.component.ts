@@ -19,6 +19,14 @@ export class InPostEasyPackComponent implements OnInit{
 
   @Output() closeClicked = new EventEmitter();
 
+  constructor(
+    private pickupPointService: PickupPointService,
+    private shippingService: ShippingService
+    ) 
+    { 
+      this.parcelLockers = this.pickupPointService.getParcelLockersInPost();
+    }
+
   close() {
     this.closeClicked.emit();
   }
@@ -37,17 +45,35 @@ export class InPostEasyPackComponent implements OnInit{
     });
 
     tiles.addTo(this.map);
+
+    this.map.on('zoomend', () => {
+      // get the current zoom level
+      const zoomLevel = this.map.getZoom();
+  
+      // adjust the radius of the circles based on the zoom level
+      const newRadius = this.calculateRadius(zoomLevel);
+  
+      // update the radius of existing circles
+      this.map.eachLayer((layer: { setRadius: (arg0: number) => void; }) => {
+        if (layer instanceof L.CircleMarker) {
+          layer.setRadius(newRadius);
+        }
+      });
+    });
   }
 
-  constructor(
-    private pickupPointService: PickupPointService,
-    private shippingService: ShippingService
-    ) 
-    { 
-      this.parcelLockers = this.pickupPointService.getParcelLockersInPost();
+  calculateRadius(zoomLevel: number): number {
+    // adjust the radius based on the zoom level
+    if (zoomLevel < 12) {
+      return 200;
+    } else if (zoomLevel < 16) {
+      return 20;
+    } else {
+      return 10;
     }
-
-    addParcels(): void {
+  }
+  
+  addParcels(): void {
 
       let color: string;
       
@@ -57,17 +83,19 @@ export class InPostEasyPackComponent implements OnInit{
       parcels.forEach(parcel => {
 
         if(parcel.id == 1)
-        color = 'yellow';
+        color = '#ffff00';
         else if(parcel.id == 2)
         color = 'red';
         else
         color = 'black';
 
+        const radius = this.calculateRadius(this.map.getZoom());
+
         const marker = L.circle([parcel.positionX, parcel.positionY], {
           color: color,
           fillColor: color,
           fillOpacity: 0.5,
-          radius: 10
+          radius: radius
         }).addTo(this.map);
       
         const chooseParcelBtn = document.createElement('button');

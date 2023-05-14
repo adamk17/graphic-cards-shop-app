@@ -1,45 +1,65 @@
-<h1>Cart</h1>
+<div *ngIf="items.length > 0">
+  <h1>Cart</h1>
+  <h1>Products:</h1>
 
-<h3>Products:</h3>
-<div class="cart-item" *ngFor="let item of items">
-  <span>{{ item.name }}</span>
-  <span>{{ item.price }} zł</span>
+  <div class="cart-it" *ngFor="let card of items">
+    <div class="cart-item">
+      <span>{{ card.name }}</span>
+      <span>{{ card.amount }}</span>
+      <span>{{ card.price * card.amount}} zł</span>
+    </div>
+    <div class="qty">
+      <span class="minus bg-dark" (click)="decreaseValue(card)">-</span>
+      <input type="number" class="count" name="qty" value={{card.amount}}>
+      <span class="plus bg-dark" (click)="increaseValue(card)">+</span>
+    </div>
+  </div>
+
+  <div class="shipping-form">
+    <h1>Shipping prices:</h1>
+
+    <h3>On-line pay:</h3>
+
+
+
+    <div class="shipping-item" *ngFor="let shipping of shippingCostsOnLine | async "
+      [class.selected]="shipping === chosenShipping" (click)="choseShipping(shipping)">
+      <table>
+        <tr>
+          <td class="name-column">{{shipping.type}}</td>
+          <td class="days-column">In {{shipping.from}} to {{shipping.to}} days</td>
+          <td>{{shipping.price}}</td>
+        </tr>
+      </table>
+    </div>
+
+    <h3>On-Delivery pay:</h3>
+    <div class="shipping-item" *ngFor="let shipping of shippingCostsOnDelivery | async"
+      [class.selected]="shipping === chosenShipping" (click)="choseShipping(shipping)">
+      <table>
+        <tr>
+          <td class="name-column">{{shipping.type}}</td>
+          <td class="days-column">In {{shipping.from}} to {{shipping.to}} days</td>
+          <td>{{shipping.price}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="price-div">
+    <div>Total Prices: {{totalPrice}} zł</div>
+    <div> Delivery cost:
+      <span *ngIf="chosenShipping">{{ chosenShipping.price }} zł</span>
+    </div>
+    <div> Final cost:
+      <span> {{finalPrice}} zł</span>
+    </div>
+
+    <a routerLink="/adress">
+      <button *ngIf="chosenShipping">next</button>
+    </a>
+  </div>
+  <div *ngIf="items.length == 0">
+    <h1>Cart is empty</h1>
+  </div>
 </div>
-<h3>Shipping prices:</h3>
-
-<h3>On-line pay:</h3>
-<div class="shipping-item" *ngFor="let shipping of shippingCostsOnLine | async " 
-[class.selected]="shipping === chosenShipping"
-(click)="choseShipping(shipping)">
-  <span>{{ shipping.type }}</span>
-  <span>{{ shipping.from }}</span>
-  <span>{{ shipping.to }}</span>
-  <span>{{ shipping.price }}</span>
-</div>
-
-<h3>On-Delivery pay:</h3>
-<div class="shipping-item" *ngFor="let shipping of shippingCostsOnDelivery | async" 
-[class.selected]="shipping === chosenShipping"
-(click)="choseShipping(shipping)">
-  <span>{{ shipping.type }}</span>
-  <span>{{ shipping.from }}</span>
-  <span>{{ shipping.to }}</span>
-  <span>{{ shipping.price }}</span>
-</div>
-
-<div>Total Prices: {{totalPrice}} zł</div>
-<div> Delivery cost:
-  <span *ngIf="chosenShipping">{{ chosenShipping.price }} zł</span>
-</div>
-<div> Final cost:
-  <span> {{finalPrice}} zł</span>
-</div>
-<a routerLink="/adress">
-  <button *ngIf="chosenShipping">next</button>
-</a>
-
-
-
-
-
-

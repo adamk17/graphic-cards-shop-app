@@ -20,7 +20,7 @@ import { InPostEasyPackComponent } from './in-post-easy-pack/in-post-easy-pack.c
     CardsDetailsComponent,
     CartComponent,
     AdressFieldComponent,
-    InPostEasyPackComponent
+    InPostEasyPackComponent,
   ],
   imports: [
     BrowserModule,

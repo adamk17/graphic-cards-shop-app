@@ -1,0 +1,10 @@
+.image-item.selected {
+    background-color: limegreen;
+    margin: 2px, 2px, 2px, 2px;
+}
+.image-item {
+    display: inline-block;
+    margin-right: 10px; /* Opcjonalnie, jeśli chcesz dodać odstęp między obrazkami */
+    margin: 2px, 2px, 2px, 2px;
+  }
+
