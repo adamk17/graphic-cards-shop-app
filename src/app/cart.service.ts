@@ -41,8 +41,10 @@ export class CartService {
   }
 
   clearCart() {
+    this.items.forEach( card => {
+      card.amount = 0;
+    })
     this.items = [];
-    return this.items;
   }
 
   increaseValue(card: Cards) {

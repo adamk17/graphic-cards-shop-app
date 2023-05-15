@@ -25,7 +25,8 @@
   /* Text */
   
   h1 {
-    font-size: 32px;
+    font-size: 50px;
+    font-family:'Times New Roman', Times, serif;
   }
   
   h2 {

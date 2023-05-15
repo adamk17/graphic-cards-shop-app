@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
@@ -26,6 +27,7 @@ import { InPostEasyPackComponent } from './in-post-easy-pack/in-post-easy-pack.c
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     RouterModule.forRoot([
       { path: '', component: CardsListComponent },
       { path: 'cards/:cardId', component: CardsDetailsComponent },
