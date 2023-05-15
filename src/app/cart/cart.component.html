@@ -1,48 +1,62 @@
-<div *ngIf="items.length > 0">
-  <h1>Cart</h1>
-  <h1>Products:</h1>
+<div class="container" *ngIf="items.length > 0">
+  <h2>Products:</h2>
 
-  <div class="cart-it" *ngFor="let card of items">
-    <div class="cart-item">
-      <span>{{ card.name }}</span>
-      <span>{{ card.amount }}</span>
-      <span>{{ card.price * card.amount}} zł</span>
+
+  <div class="products-form">
+    <div class="cart-it" *ngFor="let card of items">
+      <div class="cart-item">
+        <span>{{ card.name }}</span>
+        <span>{{ card.amount }}</span>
+        <span>{{ card.price * card.amount}} zł</span>
+      </div>
+      <div class="qty">
+        <span class="minus bg-dark" (click)="decreaseValue(card)">-</span>
+        <input type="number" class="count" name="qty" value={{card.amount}}>
+        <span class="plus bg-dark" (click)="increaseValue(card)">+</span>
+      </div>
+      <button class="remove-button" (click)="removeProduct(card)">remove</button>
+
     </div>
-    <div class="qty">
-      <span class="minus bg-dark" (click)="decreaseValue(card)">-</span>
-      <input type="number" class="count" name="qty" value={{card.amount}}>
-      <span class="plus bg-dark" (click)="increaseValue(card)">+</span>
+    <div class="clean-button">
+      <button (click)="cleanCart()">clean</button>
     </div>
   </div>
 
   <div class="shipping-form">
-    <h1>Shipping prices:</h1>
+    <h2>Delivery options:</h2>
+    <div class="shipping-section">
+      <div class="shipping-title">On-line pay:</div>
 
-    <h3>On-line pay:</h3>
 
 
-
-    <div class="shipping-item" *ngFor="let shipping of shippingCostsOnLine | async "
-      [class.selected]="shipping === chosenShipping" (click)="choseShipping(shipping)">
-      <table>
-        <tr>
-          <td class="name-column">{{shipping.type}}</td>
-          <td class="days-column">In {{shipping.from}} to {{shipping.to}} days</td>
-          <td>{{shipping.price}}</td>
-        </tr>
-      </table>
+      <div class="shipping-item" *ngFor="let shipping of shippingCostsOnLine | async ">
+        <table>
+          <tr>
+            <td class="name-column">{{shipping.type}}</td>
+            <td class="days-column">In {{shipping.from}} to {{shipping.to}} days</td>
+            <td>{{shipping.price}}</td>
+          </tr>
+        </table>
+        <input class="radio-button" type="radio" name="shippingOption" [value]="shipping" [(ngModel)]="chosenShipping"
+          (change)="choseShipping(shipping)">
+      </div>
     </div>
 
-    <h3>On-Delivery pay:</h3>
-    <div class="shipping-item" *ngFor="let shipping of shippingCostsOnDelivery | async"
-      [class.selected]="shipping === chosenShipping" (click)="choseShipping(shipping)">
-      <table>
-        <tr>
-          <td class="name-column">{{shipping.type}}</td>
-          <td class="days-column">In {{shipping.from}} to {{shipping.to}} days</td>
-          <td>{{shipping.price}}</td>
-        </tr>
-      </table>
+    <div class="shipping-section">
+      <div class="shipping-title">On-Delivery pay:</div>
+      <div class="shipping-item" *ngFor="let shipping of shippingCostsOnDelivery | async">
+        <table>
+          <tr>
+            <td class="name-column">{{shipping.type}}</td>
+            <td class="days-column">In {{shipping.from}} to {{shipping.to}} days</td>
+            <td>{{shipping.price}}</td>
+          </tr>
+        </table>
+        <input class="radio-button" type="radio" name="shippingOption" [value]="shipping" [(ngModel)]="chosenShipping"
+          (change)="choseShipping(shipping)">
+
+
+      </div>
     </div>
   </div>
 
@@ -55,11 +69,14 @@
       <span> {{finalPrice}} zł</span>
     </div>
 
-    <a routerLink="/adress">
-      <button *ngIf="chosenShipping">next</button>
-    </a>
+
   </div>
-  <div *ngIf="items.length == 0">
-    <h1>Cart is empty</h1>
-  </div>
+  <a routerLink="/adress">
+    <button class="next-button" *ngIf="chosenShipping">next</button>
+  </a>
+
+</div>
+
+<div class="container" id="empty-cart" *ngIf="items.length == 0">
+  <h1>Cart is empty</h1>
 </div>

@@ -24,7 +24,7 @@ export class CartComponent {
 
   constructor(
     private cartService: CartService,
-    private shippingService: ShippingService
+    private shippingService: ShippingService,
   ) {}
 
   increaseValue(card: Cards) {
@@ -57,6 +57,16 @@ export class CartComponent {
     else {
       return this.totalPrice;
     }
+  }
+
+  cleanCart() {
+    this.cartService.clearCart();
+    this.items = this.cartService.getItems();
+  }
+
+  removeProduct(card: Cards) {
+    this.cartService.setValue(card, 0)
+    this.items = this.cartService.getItems();
   }
   
 
