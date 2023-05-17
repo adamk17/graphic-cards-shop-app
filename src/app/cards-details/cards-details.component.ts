@@ -39,6 +39,10 @@ export class CardsDetailsComponent implements OnInit {
     this.cartService.getCardAmount(card);
   }
 
+  getLedInformation(card: Cards) {
+    return card.led? 'yes' : 'no';
+  }
+
   
 
 

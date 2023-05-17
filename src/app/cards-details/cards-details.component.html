@@ -9,6 +9,9 @@
         <p>Length: {{card.cardLength}} mm</p>
         <p>Ram size: {{card.ram}} GB</p>
         <p>Core clock: {{card.coreClock}} MHz</p>
+        <p>Core clock: {{card.coreClockInBoost}} MHz</p>
+        <p>Core clock: {{card.resolution}} px</p>
+        <p>Led: {{getLedInformation(card)}}</p>
         <p>Description: {{card.description}}</p>
     </div>
     <!--<button type="button" (click)="addToCart(card)">Add to cart</button>-->
