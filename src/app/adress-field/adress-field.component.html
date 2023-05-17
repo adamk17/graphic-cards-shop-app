@@ -1,48 +1,59 @@
 <!--form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()"-->
-<form [formGroup]="checkoutForm" >
+<div class="data-form">
+  <form [formGroup]="checkoutForm">
 
     <div>
       <label for="name">
         Name
       </label>
       <input id="name" type="text" formControlName="name">
-    
+
       <label for="surname">
-          Surname
+        Surname
       </label>
       <input id="surname" type="text" formControlName="surname">
-    
-    </div >
-  
+
+      <label for="email">
+        Email
+      </label>
+      <input id="email" type="text" formControlName="email">
+
+      <label for="pesel">
+        pesel
+      </label>
+      <input id="pesel" type="text" formControlName="pesel">
+
+    </div>
+
     <div *ngIf="canDisplayAdress()">
       <label for="country">
         Country
       </label>
       <input id="country" type="text" formControlName="country">
-    
 
-    
+
+
       <label for="city">
         City
       </label>
       <input id="city" type="text" formControlName="city">
-    
 
-    
+
+
       <label for="postcode">
         Postcode
       </label>
       <input id="postcode" type="text" formControlName="postcode">
-    
-    
-    
+
+
+
       <label for="streetName">
         Street Name
       </label>
       <input id="streetName" type="text" formControlName="streetName">
-    
-    
-    
+
+
+
       <label for="streetNumber">
         Street Number
       </label>
@@ -56,30 +67,31 @@
       <span>{{chosenParcel.description}}</span><br>
       <button (click)="onOpenClicked()">Change</button>
     </div>
-    <div>
-      Price<br>
-      {{ totalPrice }}
-    </div>
+
     
-    
-  
-    
-    
-  
+
   </form>
   
-  <div *ngIf="canDisplayMap()">
-    <app-in-post-easy-pack (closeClicked)="onCloseClicked()"></app-in-post-easy-pack>
+</div>
+
+
+
+<div *ngIf="canDisplayMap()">
+  <app-in-post-easy-pack (closeClicked)="onCloseClicked()"></app-in-post-easy-pack>
+</div>
+
+
+
+<div class="image-container">
+  <div class="image-item" *ngFor="let image of images">
+    <img [src]="image" width="100" height="100" alt="Obrazek">
+    <br><input class="radio-button" type="radio" name="shippingOption" [value]="image" [(ngModel)]="chosenImage"
+      (change)="choseImage(image)">
   </div>
-  
-  <div class="image-item" *ngFor="let image of images"
-  [class.selected]="image === chosenImage" (click)="choseImage(image)">
-    <img [src]="image" width="100" height="100"  alt="Obrazek">
-  </div>
+</div>
 
-  <div><button class="button" type="submit" (click)="onSubmit()">Purchase</button></div>
-
-  
-  
-
- 
+<div class="price">
+  <h2>Price:</h2>
+  <h2>{{ totalPrice }}</h2>
+  <button  type="submit" (click)="onSubmit()">Purchase</button>
+</div>

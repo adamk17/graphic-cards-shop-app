@@ -7,11 +7,15 @@
 
 h2 {
   font-size: 30px;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .products-form {
-  
   margin-bottom: 2%;
+}
+
+.products-form > h2{
+  text-align: center
 }
 
 .clean-button{
@@ -63,6 +67,13 @@ h2 {
 
 .shipping-item {
   margin-right: 50px;
+}
+
+.shipping-title {
+  
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 8px;
 }
 
 .name-column {
