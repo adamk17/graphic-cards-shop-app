@@ -1,8 +1,18 @@
-<div class="map-container" >
-    <div class="map-frame">
-      <div id="map"></div>
+<div class="map-container">
+  <div class="map-frame">
+    <div id="map"></div>
+    <div class="parcel-list">
+      <ul>
+        <li class="parcel" *ngFor="let parcel of parcelLockers" (click)="choseParcel(parcel)" [class.selected]="parcel === chosenParcel">
+          {{ parcel.name }}<br>
+          {{ parcel.adress}}<br>
+          {{ parcel.code}} {{parcel.town}}<br>
+          {{parcel.description}}
+        </li>
+      </ul>
     </div>
-    <button *ngIf="chosenParcel" (click)="close()">Close</button>
   </div>
-  
-  
+  <button *ngIf="chosenParcel" (click)="close()">Close</button>
+</div>
+
+
