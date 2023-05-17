@@ -114,6 +114,10 @@ export class AdressFieldComponent implements OnInit {
     return ((this.showB == true) && (this.id == 12 || this.id == 15 || this.id == 24));
   }
 
+  canDisplayImages() {
+    return (this.id > 10 && this.id < 20);
+  }
+
   canDisplayAdress() {
     return (this.id == 11 || this.id == 13 || this.id == 14 || this.id == 21 || this.id == 22 || this.id == 23);
   }
