@@ -48,6 +48,56 @@
         "description": "Na końcu parkingu",
         "positionX": 51.721249, 
         "positionY": 19.476550
+    },
+    {
+        "id": 1,
+        "name": "LOD88M",
+        "adress": "Pomorska 118",
+        "code": "91-403",
+        "town": "Łódź",
+        "description": "Na sklepie stokrotka",
+        "positionX": 51.7784876, 
+        "positionY": 19.4872101
+    },
+    {
+        "id": 1,
+        "name": "LOD41N",
+        "adress": "Byszewska 3A",
+        "code": "92-770",
+        "town": "Łódź",
+        "description": "Na parkingu przy centrum handlowym",
+        "positionX": 51.794709, 
+        "positionY": 19.592253
+    },
+    {
+        "id": 1,
+        "name": "LOD05N",
+        "adress": "Chałubińskiego 20",
+        "code": "92-109",
+        "town": "Łódź",
+        "description": "Market Dino",
+        "positionX": 51.791116, 
+        "positionY": 19.524523
+    },
+    {
+        "id": 1,
+        "name": "LOD195M",
+        "adress": "Zgierska 255",
+        "code": "91-495",
+        "town": "Łódź",
+        "description": "Stacja Shell",
+        "positionX": 51.827729, 
+        "positionY": 19.427181
+    },
+    {
+        "id": 1,
+        "name": "LOD44N",
+        "adress": "Felińskiego 7A",
+        "code": "93-252",
+        "town": "Łódź",
+        "description": "Przy budynku mieszkalnym Keja Blue",
+        "positionX": 51.731445, 
+        "positionY": 19.497291
     }
     
   ]

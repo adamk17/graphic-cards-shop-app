@@ -83,7 +83,7 @@ export class InPostEasyPackComponent implements OnInit{
       parcels.forEach(parcel => {
 
         if(parcel.id == 1)
-        color = '#ffff00';
+        color = 'red';
         else if(parcel.id == 2)
         color = 'red';
         else
@@ -102,7 +102,7 @@ export class InPostEasyPackComponent implements OnInit{
         chooseParcelBtn.innerHTML = 'Chose';
         chooseParcelBtn.addEventListener('click', () => {
           this.choseParcel(parcel);
-          this.chosenParcel = this.pickupPointService.getChosenParcelInPost();
+          
         });
         
         const popupContent = document.createElement('div');
@@ -112,9 +112,14 @@ export class InPostEasyPackComponent implements OnInit{
         marker.bindPopup(popupContent);
       });
     }
+
+    checkParcelOnMap() {
+      
+    }
     
     choseParcel(parcel: InPostParcelLockers) {
       this.pickupPointService.choseParcelInPost(parcel);
+      this.chosenParcel = this.pickupPointService.getChosenParcelInPost();
     }
  
     ngOnInit() {

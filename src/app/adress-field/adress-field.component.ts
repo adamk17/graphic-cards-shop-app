@@ -7,6 +7,7 @@ import { PickupPointService } from '../pickup-point.service'
 import { Shipping } from '../shipping';
 import { InPostParcelLockers } from '../inPostParcelLockers';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-adress-field',
@@ -35,6 +36,7 @@ export class AdressFieldComponent implements OnInit {
     private cartService: CartService,
     private shippingService: ShippingService,
     private pickupPointService: PickupPointService,
+    public router: Router
   ) { }
 
 
@@ -42,6 +44,11 @@ export class AdressFieldComponent implements OnInit {
     this.showB = false;
     this.canDisplayDeliveryPoint();
     this.chosenParcel = this.pickupPointService.getChosenParcelInPost();
+  }
+
+  goToCart() {
+    this.cartService.clearCart();
+    this.router.navigate(["/cart"]);
   }
 
   onOpenClicked() {
@@ -81,27 +88,50 @@ export class AdressFieldComponent implements OnInit {
 
     if (this.canDisplayAdress()) {
       if (this.validatePersonalData() && this.validateAdress()) {
-        window.alert('name: ' + name + ' Surname: ' + surname +
-          " \nadress " + country + city + postcode + streetname + streetnumber +
-          "\image " + this.chosenImage);
+        if (this.canDisplayImages() && this.chosenImage) {
+          window.alert('ordered');
           this.checkoutForm.reset();
+          this.goToCart();
+        }
+        else if (this.canDisplayImages() && !this.chosenImage) {
+          window.alert('you must chose payment method');
+          //this.checkoutForm.reset();
+        }
+        else {
+          window.alert('ordered');
+          this.checkoutForm.reset();
+          this.goToCart();
+        }
       }
       else {
         window.alert('bad data')
         //this.checkoutForm.reset();
       }
 
+
     }
     else if (!this.canDisplayAdress()) {
       if (this.validatePersonalData()) {
-         window.alert('name: ' + name + ' Surname: ' + surname +
-          "\image " + this.chosenImage);
+        if (this.canDisplayImages() && this.chosenImage) {
+          window.alert('ordered');
           this.checkoutForm.reset();
+          this.goToCart();
+        }
+        else if (this.canDisplayImages() && !this.chosenImage) {
+          window.alert('you must chose payment method');
+          //this.checkoutForm.reset();
+        }
+        else {
+          window.alert('ordered');
+          this.checkoutForm.reset();
+          this.goToCart();
+        }
       }
       else {
         window.alert('bad data')
         //this.checkoutForm.reset();
       }
+
     }
     else {
       window.alert('bad data')
@@ -113,6 +143,10 @@ export class AdressFieldComponent implements OnInit {
 
   canDisplayMap() {
     return ((this.showB == true) && (this.id == 12 || this.id == 15 || this.id == 24));
+  }
+
+  canDisplayImages() {
+    return (this.id > 10 && this.id < 20);
   }
 
   canDisplayAdress() {
@@ -165,7 +199,7 @@ export class AdressFieldComponent implements OnInit {
 
 
 
-    window.alert('pesel dobry');
+    //window.alert('pesel dobry');
     return true;
   }
 
@@ -197,7 +231,6 @@ export class AdressFieldComponent implements OnInit {
   }
 
   validatePersonalData() {
-    window.alert('cos sie dzieje');
     let name = this.checkoutForm.value.name;
     let surname = this.checkoutForm.value.surname;
     let email = this.checkoutForm.value.email;

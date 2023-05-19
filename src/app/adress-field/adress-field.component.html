@@ -82,7 +82,7 @@
 
 
 
-<div class="image-container">
+<div class="image-container" *ngIf="canDisplayImages()">
   <div class="image-item" *ngFor="let image of images">
     <img [src]="image" width="100" height="100" alt="Obrazek">
     <br><input class="radio-button" type="radio" name="shippingOption" [value]="image" [(ngModel)]="chosenImage"
