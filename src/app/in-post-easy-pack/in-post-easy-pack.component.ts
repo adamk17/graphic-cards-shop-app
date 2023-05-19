@@ -83,7 +83,7 @@ export class InPostEasyPackComponent implements OnInit{
       parcels.forEach(parcel => {
 
         if(parcel.id == 1)
-        color = '#ffff00';
+        color = 'red';
         else if(parcel.id == 2)
         color = 'red';
         else

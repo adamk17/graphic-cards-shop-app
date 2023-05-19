@@ -30,13 +30,13 @@
 
 
       <div class="shipping-item" *ngFor="let shipping of shippingCostsOnLine | async ">
-        <table>
-          <tr>
-            <td class="name-column">{{shipping.type}}</td>
-            <td class="days-column">In {{shipping.from}} to {{shipping.to}} days</td>
-            <td>{{shipping.price}}</td>
-          </tr>
-        </table>
+      <table>
+        <tr>
+          <td class="name-column">{{shipping.type}}</td>
+          <td class="days-column">In {{shipping.from}} to {{shipping.to}} days</td>
+          <td>{{shipping.price}}</td>
+        </tr>
+      </table>
         <input class="radio-button" type="radio" name="shippingOption" [value]="shipping" [(ngModel)]="chosenShipping"
           (change)="choseShipping(shipping)">
       </div>
@@ -45,13 +45,13 @@
     <div class="shipping-section">
       <div class="shipping-title">On-Delivery pay:</div>
       <div class="shipping-item" *ngFor="let shipping of shippingCostsOnDelivery | async">
-        <table>
-          <tr>
-            <td class="name-column">{{shipping.type}}</td>
-            <td class="days-column">In {{shipping.from}} to {{shipping.to}} days</td>
-            <td>{{shipping.price}}</td>
-          </tr>
-        </table>
+      <table>
+        <tr>
+          <td class="name-column">{{shipping.type}}</td>
+          <td class="days-column">In {{shipping.from}} to {{shipping.to}} days</td>
+          <td>{{shipping.price}}</td>
+        </tr>
+      </table>
         <input class="radio-button" type="radio" name="shippingOption" [value]="shipping" [(ngModel)]="chosenShipping"
           (change)="choseShipping(shipping)">
 
@@ -71,12 +71,12 @@
 
 
   </div>
-  <a routerLink="/adress">
+    <a routerLink="/adress">
     <button class="next-button" *ngIf="chosenShipping">next</button>
-  </a>
+    </a>
 
-</div>
+  </div>
 
 <div class="container" id="empty-cart" *ngIf="items.length == 0">
-  <h1>Cart is empty</h1>
-</div>
+    <h1>Cart is empty</h1>
+  </div>
