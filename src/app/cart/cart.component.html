@@ -14,7 +14,9 @@
         <input type="number" class="count" name="qty" value={{card.amount}}>
         <span class="plus bg-dark" (click)="increaseValue(card)">+</span>
       </div>
-      <button class="remove-button" (click)="removeProduct(card)">remove</button>
+      <button class="remove-button" (click)="removeProduct(card)">
+        <img [src]="'assets/trash icon.jpg'" width="45" height="40" alt="Obrazek">
+      </button>
 
     </div>
     <div class="clean-button">
@@ -61,7 +63,7 @@
   </div>
 
   <div class="price-div">
-    <div>Total Prices: {{totalPrice}} zł</div>
+    <div>Total Price: {{totalPrice}} zł</div>
     <div> Delivery cost:
       <span *ngIf="chosenShipping">{{ chosenShipping.price }} zł</span>
     </div>

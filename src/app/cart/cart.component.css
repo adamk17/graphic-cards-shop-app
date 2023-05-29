@@ -188,6 +188,7 @@ input:disabled {
 }
 
 .remove-button {
+  background-color: white;
   margin: 1% 1%;
   border-radius: 5px;
 }
