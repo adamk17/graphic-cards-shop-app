@@ -2,8 +2,9 @@
   <div class="map-frame">
     <div id="map"></div>
     <div class="parcel-list">
+      <input type="text" [(ngModel)]="searchTerm" (input)="searchParcel()" placeholder="Search...">
       <ul>
-        <li class="parcel" *ngFor="let parcel of parcelLockers" (click)="choseParcel(parcel)" [class.selected]="parcel === chosenParcel">
+        <li class="parcel" *ngFor="let parcel of filteredParcelLockers" (click)="choseParcel(parcel)" [class.selected]="parcel === chosenParcel">
           {{ parcel.name }}<br>
           {{ parcel.adress}}<br>
           {{ parcel.code}} {{parcel.town}}<br>

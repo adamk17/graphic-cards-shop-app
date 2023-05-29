@@ -18,7 +18,7 @@ export const cards = [
     {
         id: 1,
         name: 'Rtx 3070',
-        price: 2500,
+        price: 3500,
         cardLength: 267,
         ram: 8,
         coreClock: 1500,
@@ -83,7 +83,7 @@ export const cards = [
         led: true,
         description: 'you can buy it and play some litle old games',
         amount: 0,
-        image: 'assets/card pictures/rtx 3060.jpg'
+        image: 'assets/card pictures/rtx 2080 ti.jpg'
     },
     {
         id: 6,
@@ -97,6 +97,6 @@ export const cards = [
         led: true,
         description: 'you can play some old games on it',
         amount: 0,
-        image: 'assets/card pictures/rtx 3060.jpg'
+        image: 'assets/card pictures/gtx 1660.jpg'
     },
 ]

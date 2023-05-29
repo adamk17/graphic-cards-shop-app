@@ -136,6 +136,7 @@ export class AdressFieldComponent implements OnInit {
     else {
       window.alert('bad data')
       //this.checkoutForm.reset();
+      //just comment
     }
 
   }
