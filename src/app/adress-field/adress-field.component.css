@@ -11,18 +11,35 @@
   align-items: center;
 }
 
-.price {
-  text-align: center;
-  margin-bottom: 10px;
+h2 {
+  padding-top: 40px;
+  font-size: 25px;
 }
 
-.price :nth-child() {
-  margin-bottom: 10px;
+.price {
+  background: aliceblue;
+  text-align: center;
+  margin-top: 40px;
+  padding-bottom: 30px;
+  margin-left: 45%;
+  margin-right: 45%;
+  border-radius: 15px;
+}
+
+
+.price > h2 {
+  padding-top: 20px;
+  padding-bottom: 1x;
+}
+
+.price > button {
+  border-radius: 7px;
 }
 
 .payment-container {
   background: aliceblue;
   text-align: center;
+  margin-top: 60px;
   margin-left: 30%;
   margin-right: 30%;
   border-radius: 30px;

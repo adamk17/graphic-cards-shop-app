@@ -8,6 +8,10 @@ import { Shipping } from '../shipping';
 import { InPostParcelLockers } from '../inPostParcelLockers';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { DialogBadDataComponent } from '../dialog-bad-data/dialog-bad-data.component';
+import { DialogNoPaymentComponent } from '../dialog-no-payment/dialog-no-payment.component';
+import { DialogOrderedComponent } from '../dialog-ordered/dialog-ordered.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-adress-field',
@@ -36,6 +40,9 @@ export class AdressFieldComponent implements OnInit {
     private cartService: CartService,
     private shippingService: ShippingService,
     private pickupPointService: PickupPointService,
+    private dialogBadData: MatDialog,
+    private dialogNoPayment: MatDialog,
+    private dialogOrdered: MatDialog,
     public router: Router
   ) { }
 
@@ -46,10 +53,7 @@ export class AdressFieldComponent implements OnInit {
     this.chosenParcel = this.pickupPointService.getChosenParcelInPost();
   }
 
-  goToCart() {
-    this.cartService.clearCart();
-    this.router.navigate(["/cart"]);
-  }
+  
 
   onOpenClicked() {
     this.showB = true;
@@ -89,23 +93,27 @@ export class AdressFieldComponent implements OnInit {
     if (this.canDisplayAdress()) {
       if (this.validatePersonalData() && this.validateAdress()) {
         if (this.canDisplayImages() && this.chosenImage) {
-          window.alert('ordered');
+          //window.alert('ordered');
           this.checkoutForm.reset();
-          this.goToCart();
+          //this.goToCart();
+          this.dialogOrdered.open(DialogOrderedComponent)
         }
         else if (this.canDisplayImages() && !this.chosenImage) {
-          window.alert('you must chose payment method');
+          //window.alert('you must chose payment method');
           //this.checkoutForm.reset();
+          this.dialogNoPayment.open(DialogNoPaymentComponent)
         }
         else {
-          window.alert('ordered');
+          //window.alert('ordered');
           this.checkoutForm.reset();
-          this.goToCart();
+          //this.goToCart();
+          this.dialogOrdered.open(DialogOrderedComponent)
         }
       }
       else {
-        window.alert('bad data')
+        //window.alert('bad data')
         //this.checkoutForm.reset();
+        this.dialogBadData.open(DialogBadDataComponent)
       }
 
 
@@ -113,30 +121,34 @@ export class AdressFieldComponent implements OnInit {
     else if (!this.canDisplayAdress()) {
       if (this.validatePersonalData()) {
         if (this.canDisplayImages() && this.chosenImage) {
-          window.alert('ordered');
+          //window.alert('ordered');
           this.checkoutForm.reset();
-          this.goToCart();
+          //this.goToCart();
+          this.dialogOrdered.open(DialogOrderedComponent)
         }
         else if (this.canDisplayImages() && !this.chosenImage) {
-          window.alert('you must chose payment method');
+          //window.alert('you must chose payment method');
           //this.checkoutForm.reset();
+          this.dialogNoPayment.open(DialogNoPaymentComponent)
         }
         else {
-          window.alert('ordered');
+          //window.alert('ordered');
           this.checkoutForm.reset();
-          this.goToCart();
+          //this.goToCart();
+          this.dialogOrdered.open(DialogOrderedComponent)
         }
       }
       else {
-        window.alert('bad data')
+        //window.alert('bad data')
         //this.checkoutForm.reset();
+        this.dialogBadData.open(DialogBadDataComponent)
       }
 
     }
     else {
-      window.alert('bad data')
+      //window.alert('bad data')
       //this.checkoutForm.reset();
-      //just comment
+      this.dialogBadData.open(DialogBadDataComponent)
     }
 
   }
@@ -286,34 +298,6 @@ export class AdressFieldComponent implements OnInit {
 
     return true;
   }
-
-
-
-  //chuj ci w dupe pietek
-  // id: any;
-  // textToDisplay: string = " Chuj ci w dupe pietek";
-  // menuVisible: boolean = false;
-  // userVisible: boolean = false;
-
-  // animateText() {
-  // const mainText = document.getElementById("main_text");
-  // let textIterator = 0;
-  // let num = this.id;
-  // clearInterval(this.id!);
-  // this.id = setInterval(() => {
-
-
-  //   if (textIterator != this.textToDisplay.length)
-  //     {
-  //       textIterator++;
-  //       mainText!.innerText = this.textToDisplay.substring(0, textIterator);
-  //       mainText!.style.color = '#' + Math.floor(Math.random() * 16777215).toString(16);
-  //       mainText!.style.fontSize = (Math.floor(Math.random() * 5) + 98) + "px";
-
-  //     }
-  //     else textIterator = 0;
-  //   }, 200);
-  //}
 
 
 

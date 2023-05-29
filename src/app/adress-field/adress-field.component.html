@@ -62,7 +62,8 @@
       <input id="streetNumber" type="text" formControlName="streetNumber">
     </div>
 
-    <div *ngIf="canDisplayDeliveryPoint()">
+    <div class="delivery-point" *ngIf="canDisplayDeliveryPoint()">
+      <h2>Delivery point:</h2>
       <span>{{chosenParcel.name}}</span><br>
       <span>{{chosenParcel.adress}}</span><br>
       <span>{{chosenParcel.code}} {{chosenParcel.town}}</span><br>
@@ -95,7 +96,6 @@
 </div>
 
 <div class="price">
-  <h2>Price:</h2>
-  <h2>{{ totalPrice }}</h2>
+  <h2>Price: {{ totalPrice }}</h2>
   <button type="submit" (click)="onSubmit()">Purchase</button>
 </div>
